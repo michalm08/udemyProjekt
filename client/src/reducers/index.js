@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
+import alert from './alert';
+import auth from './auth';
 
-export default combineReducers({});
-
-//git add .
-// git commit -m "initialize redux"
+export default combineReducers({ alert, auth });
