@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
+import DashboardActions from './DashboardActions';
 import { getCurrentProfile } from '../../actions/profile';
 
 const Dashboard = ({
@@ -22,10 +23,18 @@ const Dashboard = ({
       <p className='lead'>
         <i className='fas fa-user'></i> Welcome {user && user.name}
       </p>
-      {profile!==null? <>has</>:
-      <><p>You have not yet satup a profile please add some info</p>
-      <Link to='/create-profile' className='btn btn-primary my-1'>Create profile</Link>
-      </>}
+      {profile !== null ? (
+        <>
+          <DashboardActions />
+        </>
+      ) : (
+        <>
+          <p>You have not yet satup a profile please add some info</p>
+          <Link to='/create-profile' className='btn btn-primary my-1'>
+            Create profile
+          </Link>
+        </>
+      )}
     </>
   );
 };
