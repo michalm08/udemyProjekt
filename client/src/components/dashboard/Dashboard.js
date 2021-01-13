@@ -32,9 +32,9 @@ const Dashboard = ({
           <Experience experience={profile.experience} />
           <Education education={profile.education} />
 
-          <div className="my-2">
-            <button className="btn btn-danger" onClick={()=>deleteAccount()}>
-              <i className="fas fa-user-minus"></i>
+          <div className='my-2'>
+            <button className='btn btn-danger' onClick={() => deleteAccount()}>
+              <i className='fas fa-user-minus'></i>
               Delete my account
             </button>
           </div>
@@ -63,4 +63,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  Dashboard
+);
