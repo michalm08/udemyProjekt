@@ -37,6 +37,7 @@ function reducer(state = initialState, action) {
         ...state,
         error: payload,
         loading: false,
+        profile: null,
       };
     case CLEAR_PROFILE:
       return {
@@ -49,7 +50,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         repos: payload,
-        loading: false
+        loading: false,
       };
     default:
       return state;

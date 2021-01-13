@@ -7,7 +7,7 @@ import {
   UPDATE_PROFILE,
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
-  GET_REPOS
+  GET_REPOS,
 } from './types';
 
 //Get current users profile
@@ -28,7 +28,7 @@ export const getCurrentProfile = () => async (dispatch) => {
 
 //Get all profiles
 export const getProfiles = () => async (dispatch) => {
-  dispatch({type:CLEAR_PROFILE});
+  dispatch({ type: CLEAR_PROFILE });
   try {
     const res = await axios.get('/api/profile');
     dispatch({
@@ -60,7 +60,7 @@ export const getProfileById = (userId) => async (dispatch) => {
 };
 
 //Get github repos
-export const getGithubRepos = username => async (dispatch) => {
+export const getGithubRepos = (username) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/profile/github/${username}`);
     dispatch({
@@ -80,6 +80,7 @@ export const createProfile = (formData, history, edit = false) => async (
   dispatch
 ) => {
   try {
+    console.log('tu1');
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -210,7 +211,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm('Are you sure? This can NOT be undone')) {
     try {
-      const res = await axios.delete(`/api/profile`);
+      await axios.delete(`/api/profile`);
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });
