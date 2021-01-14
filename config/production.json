@@ -1,6 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://michal123:michal123@cluster0.xkuil.mongodb.net/testStyczen?retryWrites=true&w=majority",
-    "jwtSecret":"mysecrettoken",
-    "githubClientId":"adb31f969c84b9ba3efa",
-    "githubSecret":"842c59d2c5328f30d4877f542a4af32ea900eeda"
-}
