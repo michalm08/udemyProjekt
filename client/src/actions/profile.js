@@ -80,25 +80,30 @@ export const createProfile = (formData, history, edit = false) => async (
   dispatch
 ) => {
   try {
-    console.log('tu1');
+    console.log('try0');
     const config = {
       headers: {
         'Content-Type': 'application/json',
       },
     };
-    const res = await axios.post('/api/profile', formData, config);
+    console.log('try1');
+    console.log(formData);
 
+    const res = await axios.post('/api/profile', formData, config);
+    console.log('try2');
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
     });
-
+    console.log('try3');
     dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
-
+    console.log('try4');
     if (!edit) {
       history.push('/dashboard');
     }
+    console.log('tryEnd');
   } catch (err) {
+    console.log('try');
     const errors = err.response.data.errors;
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
