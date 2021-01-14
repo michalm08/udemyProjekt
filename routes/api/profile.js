@@ -35,13 +35,9 @@ router.get('/me', auth, async (req, res) => {
 // @access  Private
 router.post(
   '/',
-  [
-    auth,
-    [
-      body('status', 'Status is required').not().isEmpty(),
-      body('skills', 'Skills is required').not().isEmpty(),
-    ],
-  ],
+  auth,
+  body('status', 'Status is required').notEmpty(),
+  body('skills', 'Skills is required').notEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -75,12 +71,16 @@ router.post(
     // if (skills) profileFields.skills = skills;
 
     if (skills) {
-      //trim usuwa nadmiar spacji
-      profileFields.skills = skills.split(',').map((skill) => skill.trim());
-      // profileFields.skills = skills
-      //   .split(',')
-      //   .map((skill) => ' ' + skill.trim());
+      if(Array.isArray(skills)){
+        profileFields.skills = skills
+      }else{
+      profileFields.skills = skills.split(',');
+      }
     }
+    // console.log(skills);
+    // if (skills) {
+    //   profileFields.skills = skills.split(',').map((skill) => skill.trim());
+    // }
 
     // build social object
     profileFields.social = {};
